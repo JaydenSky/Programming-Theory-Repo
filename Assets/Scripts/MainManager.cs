@@ -4,15 +4,23 @@ using UnityEngine;
 
 public class MainManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public static MainManager Instance { get; private set; }
+
+    public string favoriteColor;
+    public string secondColor;
+
+    private void Awake()
     {
-        
+        if (Instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
+
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 }

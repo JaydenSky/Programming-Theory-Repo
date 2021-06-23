@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class Cube : Shape
 {
-    public Color color;
+    protected Color color;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        shapeColor = MainManager.Instance.secondColor;
+        SetColor();
     }
 
     public override void Move()
