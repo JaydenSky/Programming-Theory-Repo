@@ -25,9 +25,35 @@ public class Shape : MonoBehaviour
 
     public MeshRenderer Renderer;
 
+    protected float xRange = 14;
+    protected float zRange = 5;
+
+    protected float horizontalInput;
+    protected float forwardInput;
+    private float speed = 10;
+
     public virtual void Move()
     {
-
+        if (Input.GetKey(KeyCode.UpArrow) && transform.position.z < zRange)
+        {
+            forwardInput = 1;
+            transform.Translate(Vector3.forward * Time.deltaTime * forwardInput * speed);
+        }
+        else if (Input.GetKey(KeyCode.DownArrow) && transform.position.z > -zRange)
+        {
+            forwardInput = -1;
+            transform.Translate(Vector3.forward * Time.deltaTime * forwardInput * speed);
+        }
+        else if (Input.GetKey(KeyCode.RightArrow) && transform.position.x < xRange)
+        {
+            horizontalInput = 1;
+            transform.Translate(Vector3.forward * Time.deltaTime * horizontalInput * speed);
+        }
+        else if (Input.GetKey(KeyCode.LeftArrow) && transform.position.x > -xRange)
+        {
+            horizontalInput = -1;
+            transform.Translate(Vector3.forward * Time.deltaTime * horizontalInput * speed);
+        }
     }
 
     public void SetColor()
